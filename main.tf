@@ -56,7 +56,7 @@ resource aws_security_group "hashicat" {
   }
 
   tags = {
-    Name = "${var.prefix}-security-group"
+    name = "${var.prefix}-security-group"
   }
 }
 
@@ -69,7 +69,7 @@ resource aws_internet_gateway "hashicat" {
   vpc_id = aws_vpc.hashicat.id
 
   tags = {
-    Name = "${var.prefix}-internet-gateway"
+    name = "${var.prefix}-internet-gateway"
   }
 }
 
@@ -123,7 +123,9 @@ resource aws_instance "hashicat" {
   vpc_security_group_ids      = [aws_security_group.hashicat.id]
 
   tags = {
-    Name = "${var.prefix}-hashicat-instance"
+    name = "${var.prefix}-hashicat-instance"
+    billable = true
+    department = "devops"
   }
 }
 
